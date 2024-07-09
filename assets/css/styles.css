@@ -1,22 +1,32 @@
+#container {
+    margin: 5rem;
+    padding: 1rem;
+    width: 50%;
+
+    background-color: yellowgreen;
+}
+#tareas_enlistadas {
+    margin: 5rem;
+}
 .tarea {
     display: flex;
 }
 
 .btn {
-    background-color: red;
+    background-color: rgb(202, 8, 121);
     color: white;
 }
 
 .idTarea {
-    width: 25%;
+    width: 5%;
 }
 
 .nombreTarea {
-    width: 30%;
+    width: 60%;
 }
 
 .statusTarea {
-    width: 20%;
+    width: 10%;
 }
 
 .eliminarTarea {
@@ -26,5 +36,6 @@
 #tareas {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     width: 80%;
 }
