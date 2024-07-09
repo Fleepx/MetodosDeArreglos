@@ -16,6 +16,7 @@ const agregarTarea = function (posicion) {
 
     idActual++;
     renderizarDatos();
+    actualizarContadores();
 }
 
 
@@ -29,30 +30,24 @@ const eliminarElementoPorId = function (id) {
     tareas.splice(posicion, 1);
 
     renderizarDatos();
+    actualizarContadores();
 }
 
 const actualizarConfirmacion = function (id) {
-    const posicion = tareas.findIndex((obj) => {
-        if (id === obj.id) {
-            return true;
-        }
-        return false;
-    });
+    const posicion = tareas.findIndex((obj) => obj.id === id);
 
-    tareas[posicion].confirmado = !tareas[posicion].confirmado;
+    if (posicion !== -1) {
+        tareas[posicion].confirmado = !tareas[posicion].confirmado;
+        renderizarDatos();
+        actualizarContadores();
+    }
 }
 
 const renderizarDatos = function () {
     const lista = document.querySelector('#tareas');
     let html = '';
     for (const tarea of tareas) {
-        console.log(tarea);
-
-        if (tarea.confirmado) {
-            chequeado = 'checked';
-        } else {
-            chequeado = '';
-        }
+        const chequeado = tarea.confirmado ? 'checked' : '';
 
         html += `
         <div class="tarea">
@@ -74,4 +69,16 @@ const renderizarDatos = function () {
     lista.innerHTML = html;
 }
 
-renderizarDatos();
+const actualizarContadores = function () {
+    const totalTareas = tareas.length;
+    const tareasRealizadas = tareas.filter(tarea => tarea.confirmado).length;
+
+    document.querySelector('#total').textContent = `Total de tareas: ${totalTareas}`;
+    document.querySelector('#tareasRealizadas').textContent = `Tareas realizadas: ${tareasRealizadas}`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarContadores();
+    renderizarDatos();
+});
+
