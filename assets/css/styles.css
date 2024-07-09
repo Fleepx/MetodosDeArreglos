@@ -1,0 +1,30 @@
+.tarea {
+    display: flex;
+}
+
+.btn {
+    background-color: red;
+    color: white;
+}
+
+.idTarea {
+    width: 25%;
+}
+
+.nombreTarea {
+    width: 30%;
+}
+
+.statusTarea {
+    width: 20%;
+}
+
+.eliminarTarea {
+    width: 25%;
+}
+
+#tareas {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
